@@ -1,0 +1,90 @@
+{
+  "#4": "To actually load your theme: on linux: run a local webserver (e.g. `webfsd`) and go to https://mapcomplete.osm.be/theme?userlayout=http://127.0.0.1:8080/path-to-your-theme.json",
+  "#5": "If you don't know how to run a webserver: go to https://www.base64encode.org/ , copy paste this entire document in the 'encode' field and encode it;",
+  "#6": "Then, go to https://mapcomplete.osm.be/theme?userlayout=true#your-base64-encoded-file",
+  "id": "hvac",
+  "credits": "LeJun",
+  "title": {
+    "en": "Heating, ventilation, and air conditioning",
+    "fr": "Chauffage, ventilation, et climatisation"
+  },
+  "description": {
+    "en": "Map of places using technologies to control air parameters such as temperature, humidity, and overall quality.",
+    "fr": "Carte des lieux disposant de moyens de contrôle de paramètres de l'air comme la température, l'humidité, et la composition générale."
+  },
+  "icon": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Fan_%28example%29.svg",
+  "startZoom": 0,
+  "startLat": 0,
+  "startLon": 0,
+  "#7": "For more options and configuration, see the documentation in LayoutConfig.json",
+  "#8": "`layers` is where most of the content will be. Either reuse an already existing layer by simply calling it's ID or define a whole new layer. An overview of builtin layers is at https://github.com/pietervdvn/MapComplete/blob/develop/Docs/BuiltinLayers.md#normal-layers",
+  "layers": [
+    {
+      "id": "shops",
+      "tagRenderings": [
+        {
+          "question": {
+            "en": "Does this place provides air-conditioning?"
+          },
+          "mappings": [
+            {
+              "if": "air_conditioning=no",
+              "then": {
+                "en": "This place doesn't provide air-conditioning"
+              }
+            },
+            {
+              "if": "air_conditioning=yes",
+              "then": {
+                "en": "This place provides air-conditioning"
+              }
+            }
+          ]
+        },
+        {
+          "question": {
+            "en": "Is this place heated?",
+            "mappings": [
+              {
+                "if": "heating=no",
+                "then": {
+                  "en": "This place isn't heated"
+                }
+              },
+              {
+                "if": "heating=yes",
+                "then": {
+                  "en": "This place is heated"
+                }
+              },
+              {
+                "if": "heating=fireplace",
+                "then": {
+                  "en": "This place is heated through one or multiple fireplaces"
+                }
+              },
+              {
+                "if": "heating=stove",
+                "then": {
+                  "en": "This place is heated through one or multiple stoves"
+                }
+              },
+              {
+                "if": "heating=radiator",
+                "then": {
+                  "en": "This place is heated through one or multiple radiators"
+                }
+              },
+              {
+                "if": "heating=underfloor",
+                "then": {
+                  "en": "This place has underfloor heating"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
